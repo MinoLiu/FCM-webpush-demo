@@ -10,7 +10,7 @@ npm install
 
 # setting.js config
 
-Go to firebase fill your Authorization key
+Go to firebase get your GCM_KEY and fill it
 
 and
 
@@ -21,7 +21,7 @@ vapidKeys.privateKey
 fill to setting
 
 # change /src/static/manifest.json
-
+# Go to firebase get your sender id
  "gcm_sender_id": "<YOUR_SENDER_ID>"
  
  # run server on 127.0.0.1:5000
