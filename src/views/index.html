@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Push Notification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: monospace;
+      font-size: 1rem;
+      white-space: pre-wrap;
+    }
+  </style>
+  <!-- This is needed for Google Chrome support. -->
+  <link rel="manifest" href="/static/manifest.json">
+</head>
+<body>
+<p>This demo shows how to send push notifications with a payload.</p>
+
+<form>
+Notification title: <input id='notification-title' type='text' value='test_title'></input>
+Notification payload: <input id='notification-body' type='text' value='test_body'></input>
+Notification delay: <input id='notification-delay' type='number' value='0'></input> seconds
+Notification Time-To-Live: <input id='notification-ttl' type='number' value='0'></input> seconds
+</form>
+
+<button id="subscribe" disabled>Subscribe to Push Messaging</button>
+<button id="doIt" style="display:none">Request sending a notification!</button>
+
+<script src="/static/main.js"></script>
+</body>
+</html>
