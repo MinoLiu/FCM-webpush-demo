@@ -26,3 +26,10 @@ fill to setting
  
  # run server on 127.0.0.1:5000
  npm start
+
+
+```
+#### sender.js can send notification to all subscribes 
+```bash
+# Usage
+node sender.js test_title test_body
