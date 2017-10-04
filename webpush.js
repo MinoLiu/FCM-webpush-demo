@@ -9,6 +9,8 @@ const vapidPrivateKey = require('./setting.js').vapidPrivateKey;
 //vapidKeys.publicKey
 //vapidKeys.privateKey save to setting
 
+
+// if your subscribe has applicationServerKey: convertedVapidKey, you can comment setGCM_KEY
 webpush.setGCMAPIKey(String(GCM_KEY));
 webpush.setVapidDetails(
    'mailto:example@',//your email

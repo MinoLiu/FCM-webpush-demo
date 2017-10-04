@@ -3,7 +3,24 @@ var key;
 var authSecret;
 var isPushEnabled = false;
 var useNotification = false;
+var vapidPublicKey = "<YOUR VAPID PUBLICKEY HERE>";
 
+const urlBase64ToUint8Array = (base64String) => {
+	const padding = '='.repeat((4 - base64String.length % 4) % 4);
+	const base64 = (base64String + padding)
+		.replace(/\-/g, '+')
+		.replace(/_/g, '/');
+
+	const rawData = window.atob(base64);
+	const outputArray = new Uint8Array(rawData.length);
+
+	for (let i = 0; i < rawData.length; ++i) {
+		outputArray[i] = rawData.charCodeAt(i);
+	}
+	return outputArray;
+}
+
+const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
 var subBtn = document.querySelector('#subscribe');
 var submit = document.querySelector('#doIt');
@@ -27,7 +44,7 @@ window.addEventListener('load', () => {
 			}
 
 			navigator.serviceWorker.addEventListener('message', event => {
-				  console.log(event.data);
+				console.log(event.data);
 			});
 			initialiseState(reg);
 		})
@@ -88,7 +105,7 @@ const subscribe = () => {
 		.then( regs => {
 			let reg = regs[0]; // take the first one
 			if(reg && 'pushManager' in reg){ // check it exist
-				reg.pushManager.subscribe({ userVisibleOnly: true })
+				reg.pushManager.subscribe({ userVisibleOnly: true , applicationServerKey: convertedVapidKey })
 					.then(subscription => {
 						var rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
 						key = rawKey ?
