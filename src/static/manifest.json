@@ -8,6 +8,6 @@
         }],  
   "start_url": "/index.html",  
   "display": "standalone",
-  "gcm_sender_id": "555286121129",
+  "gcm_sender_id": "<YOUR_SENDER_ID>",
   "gcm_user_visible_only": true  
 }
